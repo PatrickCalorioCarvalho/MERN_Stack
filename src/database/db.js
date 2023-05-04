@@ -5,7 +5,7 @@ const connertcDatabase = () => {
 
   mongoose
     .connect(
-      "mongodb+srv://mern_stack:yPPMb6OYwN3Q9L67@cluster0.lzy5ydz.mongodb.net/MERN_DB?retryWrites=true&w=majority",
+      "mongodb+srv://locahost",
       { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => console.log("Mongo DB Atlas Conectado"))
