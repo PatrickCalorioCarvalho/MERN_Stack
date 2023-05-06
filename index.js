@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
+import connertcDatabase from "./src/database/db.js";
+import userRoute from "./src/routes/user.route.js";
+import dotenv from "dotenv"
+dotenv.config();
+
 const app = express();
-
-const connertcDatabase = require("./src/database/db");
-const userRoute = require("./src/routes/user.route");
-
 const port = 3000;
 
 connertcDatabase();

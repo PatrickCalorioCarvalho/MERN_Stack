@@ -1,15 +1,14 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const connertcDatabase = () => {
   console.log("Tentando Conectar ao Banco de Dados");
 
   mongoose
-    .connect(
-      "mongodb+srv://locahost",
+    .connect( process.env.MONGODB_URI,
       { useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => console.log("Mongo DB Atlas Conectado"))
     .catch((error) => console.log(error));
 };
 
-module.exports = connertcDatabase;
+export default connertcDatabase;
