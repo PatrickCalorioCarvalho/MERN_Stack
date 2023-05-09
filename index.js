@@ -5,6 +5,7 @@ import dotenv from "dotenv"
 
 import userRoute from "./src/routes/user.route.js";
 import authRoute from "./src/routes/auth.route.js";
+import newsRoute from "./src/routes/news.route.js";
 
 
 
@@ -16,6 +17,7 @@ connertcDatabase();
 app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/news", newsRoute);
 
 
 app.listen(port, () => {
