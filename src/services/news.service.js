@@ -1,10 +1,14 @@
-import User from "../models/News.js";
+import News from "../models/News.js";
 
-const create = (body) => User.create(body);
+const create = (body) => News.create(body);
 
-const findAll = () => User.find();
+const findAll = (limit, offset) =>
+  News.find().sort({ _id: -1 }).skip(offset).limit(limit).populate("user");
+
+const count = () => News.countDocuments();
 
 export default {
   create,
   findAll,
+  count,
 };
