@@ -80,4 +80,56 @@ const findAll = async (req, res) => {
     res.status(500).send({ message: e.message });
   }
 };
-export default { create, findAll };
+
+const topNews = async (req, res) => {
+  try {
+    const news = await newsService.topNews();
+    if (!news) {
+      return res.status(400).send({ message: "Nao ha Post Cadastrados" });
+    }
+    res.send({
+      news: {
+        id: news._id,
+        title: news.title,
+        text: news.text,
+        banner: news.banner,
+        likes: news.likes,
+        comments: news.comments,
+        name: news.user.name,
+        username: news.user.username,
+        avatar: news.user.avatar,
+      },
+    });
+  } catch (e) {
+    log.LogException(req, e.message);
+    res.status(500).send({ message: e.message });
+  }
+};
+
+const findById = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const news = await newsService.findById(id);
+    if (!news) {
+      return res.status(400).send({ message: "Nao ha Post Cadastrados" });
+    }
+    res.send({
+      news: {
+        id: news._id,
+        title: news.title,
+        text: news.text,
+        banner: news.banner,
+        likes: news.likes,
+        comments: news.comments,
+        name: news.user.name,
+        username: news.user.username,
+        avatar: news.user.avatar,
+      },
+    });
+  } catch (e) {
+    log.LogException(req, e.message);
+    res.status(500).send({ message: e.message });
+  }
+};
+
+export default { create, findAll, topNews, findById };
